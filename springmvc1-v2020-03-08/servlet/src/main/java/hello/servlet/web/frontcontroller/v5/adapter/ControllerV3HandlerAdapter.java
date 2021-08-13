@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+//어댑터 패턴. 중간에 어댑터 역할. 다양한 컨트롤러 호출 가능. forV3
 public class ControllerV3HandlerAdapter implements MyHandlerAdapter {
 
     @Override
