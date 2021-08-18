@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping("/springmvc/v2/members")
+@RequestMapping("/springmvc/v2/members") //메서드 단위에 적용되었음. 클래스 단위로 통합해보는 실습
 public class SpringMemberControllerV2 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();

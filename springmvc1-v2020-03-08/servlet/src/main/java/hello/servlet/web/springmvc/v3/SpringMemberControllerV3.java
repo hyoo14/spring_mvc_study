@@ -8,18 +8,25 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * v3
+ * Model 도입
+ * ViewName 직접 반환
+ * @RequestParam 사용
+ * @RequestMapping -> @GetMapping, @PostMapping
+ */
 @Controller
 @RequestMapping("/springmvc/v3/members")
 public class SpringMemberControllerV3 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
-    @GetMapping("/new-form")
+    @GetMapping("/new-form") //@RequestMapping에서 바꿈
     public String newForm() {
         return "new-form";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/save") //@RequestMapping에서 바꿈
     public String save(
             @RequestParam("username") String username,
             @RequestParam("age") int age,
