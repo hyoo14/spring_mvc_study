@@ -19,9 +19,9 @@ public class LogTestController {
 
         System.out.println("name = " + name);
 
-        log.trace(" trace my log="+ name);
+        log.trace(" trace my log="+ name); //더하기를 먼저 함.trace로그가 없으면 더하지도 않는데 낭비함. 그래서 이렇게 쓰면 안 됨!
 
-        log.trace("trace log={}", name);
+        log.trace("trace log={}", name); //그러므로 이렇게 써야 함. 대부분 이렇게 씀. ( if(있으면){log.trace} 이런식으로 옛날에는 씀 )
 
         log.debug("debug log={}", name);
         log.info(" info log={}", name);

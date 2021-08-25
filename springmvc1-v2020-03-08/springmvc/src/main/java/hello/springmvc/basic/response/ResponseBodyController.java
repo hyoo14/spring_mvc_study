@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+//http api -> 메세지 바디에 직접 입력하는 경우
 @Slf4j
-@RestController
+@RestController //@Controller 와 @ResponseBody 를 포함
 public class ResponseBodyController {
 
     @GetMapping("/response-body-string-v1")

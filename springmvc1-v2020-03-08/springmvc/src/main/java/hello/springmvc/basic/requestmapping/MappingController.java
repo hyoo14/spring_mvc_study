@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MappingController {
 
-    private Logger log = LoggerFactory.getLogger(getClass());
+    private Logger log = LoggerFactory.getLogger(getClass());//slf5j
 
-    @RequestMapping(value = "/hello-basic")
+    @RequestMapping(value = "/hello-basic") //두개 넣어도 됨. or 조건으로 아무거나 넣어도 요청됨 //get,post,put 등 다 받아들임. method 설정 없을 시
     public String helloBasic() {
         log.info("helloBasic");
         return "ok";
@@ -43,7 +43,7 @@ public class MappingController {
      * @PathVariable("userId") String userId -> @PathVariable userId
      * /mapping/userA
      */
-    @GetMapping("/mapping/{userId}")
+    @GetMapping("/mapping/{userId}") //요즘 이런 스타일 많으 씁니다
     public String mappingPath(@PathVariable("userId") String data) {
         log.info("mappingPath userId={}", data);
         return "ok";
@@ -66,7 +66,7 @@ public class MappingController {
      * params="mode!=debug" (! = )
      * params = {"mode=debug","data=good"}
      */
-    @GetMapping(value = "/mapping-param", params = "mode=debug")
+    @GetMapping(value = "/mapping-param", params = "mode=debug") //요즘은 잘 사용 안 함.
     public String mappingParam() {
         log.info("mappingParam");
         return "ok";
@@ -93,7 +93,7 @@ public class MappingController {
      * consumes="*\/*"
      * MediaType.APPLICATION_JSON_VALUE
      */
-    @PostMapping(value = "/mapping-consume", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/mapping-consume", consumes = MediaType.APPLICATION_JSON_VALUE) //어플리케이션제이슨만됨 //컨슘은 소비,, 정보->여기선 어플리케이션제이슨
     public String mappingConsumes() {
         log.info("mappingConsumes");
         return "ok";

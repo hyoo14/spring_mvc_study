@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
-
+//http message body에 데이터를 직접 담아서 요청. 여기서는 text
 @Slf4j
 @Controller
 public class RequestBodyStringController {
@@ -38,7 +38,8 @@ public class RequestBodyStringController {
         responseWriter.write("ok");
     }
 
-    @PostMapping("/request-body-string-v3")
+    //스프링mvc에서 지원해주는 파라미터로 http header, body 정보를 편리하게 조회. 응답에도 사용 가능한 http entity
+    @PostMapping("/request-body-string-v3") //여기선 안 썼지만 RequestEntity, ResponseEntity 도 있음. HttpEntity 를 상속 받은 것들임
     public HttpEntity<String> requestBodyStringV3(HttpEntity<String> httpEntity) throws IOException {
 
         String messageBody = httpEntity.getBody();
@@ -47,7 +48,8 @@ public class RequestBodyStringController {
         return new HttpEntity<>("ok");
     }
 
-    @ResponseBody
+
+    @ResponseBody //위를 좀 더 편리하게 하기 위해 어노테이션 제공 //RequestBody, ResponseBody 제공됨
     @PostMapping("/request-body-string-v4")
     public String requestBodyStringV4(@RequestBody String messageBody) {
         log.info("messageBody={}", messageBody);

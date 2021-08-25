@@ -20,9 +20,9 @@ public class RequestHeaderController {
                           HttpServletRequest response,
                           HttpMethod httpMethod,
                           Locale locale,
-                          @RequestHeader MultiValueMap<String, String> headerMap,
+                          @RequestHeader MultiValueMap<String, String> headerMap, //key,value 가 string
                           @RequestHeader("host") String host,
-                          @CookieValue(value = "myCookie", required = false) String cookie
+                          @CookieValue(value = "myCookie", required = false) String cookie //쿠키도 이렇게 쉽게 받을 수 있음
                           ) {
 
         log.info("request={}", request);

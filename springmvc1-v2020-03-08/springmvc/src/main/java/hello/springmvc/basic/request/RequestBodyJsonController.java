@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-
+//http message body에 데이터를 직접 담아서 요청. 여기서는 json
 /**
  * {"username":"hello", "age":20}
  * content-type: application/json
@@ -24,7 +24,7 @@ import java.nio.charset.StandardCharsets;
 @Controller
 public class RequestBodyJsonController {
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper(); //json이니까 오브젝트 맵퍼
 
     @PostMapping("/request-body-json-v1")
     public void requestBodyJsonV1(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -51,13 +51,13 @@ public class RequestBodyJsonController {
 
     @ResponseBody
     @PostMapping("/request-body-json-v3")
-    public String requestBodyJsonV3(@RequestBody HelloData data) {
+    public String requestBodyJsonV3(@RequestBody HelloData data) { //리퀘스트 바디 생략하면 안 됨.-생략하면 ModelAttribute 가 되어버리기 때문.
         log.info("username={}, age={}", data.getUsername(), data.getAge());
         return "ok";
     }
 
     @ResponseBody
-    @PostMapping("/request-body-json-v4")
+    @PostMapping("/request-body-json-v4") //http entity 사용해도 됨
     public String requestBodyJsonV4(HttpEntity<HelloData> httpEntity) {
         HelloData data = httpEntity.getBody();
         log.info("username={}, age={}", data.getUsername(), data.getAge());
@@ -65,7 +65,7 @@ public class RequestBodyJsonController {
     }
 
     @ResponseBody
-    @PostMapping("/request-body-json-v5")
+    @PostMapping("/request-body-json-v5")//반환을 데이터로(http message converter 가 응답에도 적용)
     public HelloData requestBodyJsonV5(@RequestBody HelloData data) {
         log.info("username={}, age={}", data.getUsername(), data.getAge());
         return data;
