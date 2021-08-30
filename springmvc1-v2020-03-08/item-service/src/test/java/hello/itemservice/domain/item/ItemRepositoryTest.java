@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-
+//퍼블릭 안 써도 됨 junit5부터
 class ItemRepositoryTest {
 
     ItemRepository itemRepository = new ItemRepository();
